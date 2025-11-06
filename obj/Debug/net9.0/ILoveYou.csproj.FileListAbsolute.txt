@@ -1,0 +1,14 @@
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/bin/Debug/net9.0/ILoveYou
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/bin/Debug/net9.0/ILoveYou.deps.json
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/bin/Debug/net9.0/ILoveYou.runtimeconfig.json
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/bin/Debug/net9.0/ILoveYou.dll
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/bin/Debug/net9.0/ILoveYou.pdb
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ILoveYou.GeneratedMSBuildEditorConfig.editorconfig
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ILoveYou.AssemblyInfoInputs.cache
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ILoveYou.AssemblyInfo.cs
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ILoveYou.csproj.CoreCompileInputs.cache
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ILoveYou.dll
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/refint/ILoveYou.dll
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ILoveYou.pdb
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ILoveYou.genruntimeconfig.cache
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ref/ILoveYou.dll
