@@ -3,8 +3,6 @@ namespace ILoveYou;
 
 public class CommandsManager
 {
-
-
     public static void ExecuteCommands(string input)
     {
         switch (input)
@@ -19,7 +17,7 @@ public class CommandsManager
                 ExecuteNote();
                 break;
             default:
-                ConsolePersonalizer.ColorPrint("Oe estás tocando cositas mal 7-7", ConsoleColor.Red);
+                ConsolePersonalizer.ColorPrint("Please select a valid option from the menu", ConsoleColor.Red);
                 break;
         }
     }
@@ -27,21 +25,38 @@ public class CommandsManager
     private static void ExecuteQuiz()
     {
         ConsolePersonalizer.ColorPrint(
-            "Bienvenida al Quiz mi amor :D \n\nProcedo a Explicarte las reglas:\n" +
-            "1- Solo yo escribo en la terminal \n2- Ganarás 1 punto por acertar las respuestas disponibles\n" +
-            "3- Ganarás 2 puntos por decir algo gracioso \n4- Ganarás 3 puntos por decir algo romántico 7w7"
+            "Welcome to the Quiz, my love :D \n\nHere are the rules:\n" +
+            "1- Only I control the terminal \n2- You'll earn 1 point for correct answers\n" +
+            "3- You'll earn 2 points for making me laugh \n4- You'll earn 3 points for saying something romantic"
             , ConsoleColor.Blue);
+
         QuizHelper quizHelper = new();
-        while (quizHelper.QuizCounter < 11)
+
+        while (quizHelper.QuizCounter < QuizHelper.Questions.Length)
         {
             QuizHelper.DisplayQuestion(quizHelper.QuizCounter);
+            quizHelper.QuizCounter++;
         }
-
-        ExecuteNote();
+        QuizHelper.ShowScore();
+        Console.WriteLine("Press Enter to exit");
+        Console.ReadLine();
+        Intro();
     }
 
     private static void ExecuteGallery()
     {
+        ConsolePersonalizer.ColorPrint(
+            "Welcome to the Message Gallery, my love. Here you'll find messages I've collected.\n" +
+            "You'll discover funny and sweet moments that I hope will make you smile :3"
+            , ConsoleColor.Blue);
+
+        MessagesHelper messagesHelper = new();
+
+        while (messagesHelper.Position < MessagesHelper.Messages.Length)
+        {
+            MessagesHelper.DisplayMessages(messagesHelper.Position);
+            messagesHelper.Position++;
+        }
 
         Intro();
     }
@@ -49,22 +64,24 @@ public class CommandsManager
     private static void ExecuteNote()
     {
         ConsolePersonalizer.ColorPrint(
-            "Hola, amor, este mensaje te lo escribo el Jueves, 6 de noviembre de 2025. \n" +
-            "Este es el día en que decidí irme de tu casa, seguramente ya hayan pasado unos \n" +
-            "días. Y bueno, espero que todo este mal sentir ya sea cosa del pasado, \n" +
-            "desearía que todo quedase simplemente en un juego tonto como tantos otros, \n" +
-            "pero bueno yo también tengo mis cosas que me hacen sentir insuficiente o indigno \n" +
-            "o en general el sinónimo que quieras buscarle a esas palabras, el caso es que \n" +
-            "realmente me dolió ver como actuaste conmigo, por favor no me hagas mal \n" +
-            "ni intentes minimizar mis esfuerzos por abrirme contigo porq realmente duelen, \n" +
-            "especialmente sabiendo que eres la persona que amo :( enserio lo hago. Sin \n)" +
-            "más, espero que este mensaje te haga recordar que yo también por muy fuerte, pitudo \n" +
-            "pelilargo y mocongo que sea, también requiero de tu comprensión y apoyo. Te amo :3"
+            "Hello my love, how are you? :3 I hope you're enjoying your gift as much \n" +
+            "as I enjoyed creating it for you. I've been looking forward to this moment \n" +
+            "when you could finally see it. Truthfully, I'm not sure what else to put in \n" +
+            "this section XD so I'll dedicate these words to you:\n\n" +
+            "I love you, I love you in ways I never thought possible again\n" +
+            "I thought love was something I might never experience fully\n" +
+            "But you decided to accept me, decided I was important\n" +
+            "And I'm truly grateful that you chose to be in my life.\n" +
+            "Your very existence gives me reason to live another day,\n" +
+            "a reason to strive each day to become my best self.\n" +
+            "I simply want to be everything for you, just as you are everything to me. I love you :D"
             , ConsoleColor.Blue);
+        Console.ReadLine();
 
         Intro();
     }
 
+    //If you want to make your own name with ASCII ART there is a lot of webs for that 
     public static void Intro()
     {
         ConsolePersonalizer.ColorPrint($@"
@@ -76,12 +93,18 @@ public class CommandsManager
                                                            
 ┌──────────────────────────────────────────────────────────┐
 │                                                          │
-│  Hola mi amor, espero que te guste tu regalo {Parameters.GiveHeartEmoji}│
+│  Hello my love, I hope you like your gift {Parameters.GiveHeartEmoji}│
 │                                                          │
-│  1. Quizz                             2. Galería         │
-│  3. Notita                            4. Salir           │
+│  1. Quiz                              2. Messages        │
+│  3. Love Note                         4. Exit            │
 │                                                          │
 └──────────────────────────────────────────────────────────┘",
  ConsoleColor.Yellow);
+
+        // Reset helpers for fresh start
+        MessagesHelper galleryHelper = new();
+        QuizHelper quizHelper = new();
+        galleryHelper.Position = 0;
+        quizHelper.QuizCounter = 0;
     }
 }

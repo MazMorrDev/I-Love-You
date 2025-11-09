@@ -2,74 +2,82 @@
 
 public class QuizHelper
 {
-    public int QuizCounter { get; set; } = 1;
+    public int QuizCounter { get; set; } = 0;
     private static int QuizScore = 0;
     
-    // Estructura de datos para las preguntas
-    private static readonly QuizQuestion[] Questions = 
-    {
-        new("¿Cuál es mi color favorito?", 
-            ["Azul", "Rojo", "Verde", "Amarillo"]),
+    // Data structure for questions
+    public static readonly QuizQuestion[] Questions = 
+    [
+        new("What's my favorite color?", 
+            ["Blue", "Red", "Green", "Yellow"]),
             
-        new("De todos tus regalos cuál ha sido mi favorito?", 
-            ["Fotos de Forbe", "El Cake", "El Pulsito", "El Verso"], 
+        new("Which of your gifts has been my favorite?", 
+            ["Photo album", "The Cake", "The Bracelet", "The Poem"], 
             Parameters.ShameEmoji),
             
-        new("¿Qué hago cuando estoy nervioso/a?", 
-            ["Comerme las uñas", "Reírme a lo pendejo", "Trabarme al hablar", "Jugar con el cabello"], 
+        new("What do I do when I'm nervous?", 
+            ["Bite my nails", "Laugh nervously", "Stutter when talking", "Play with my hair"], 
             Parameters.AlertEmoji),
             
-        new("¿De qué trabajaría en una vida paralela?", 
-            ["Electricista", "Carpintero", "Músico", "Chef"], 
+        new("What would I do for work in a parallel life?", 
+            ["Electrician", "Carpenter", "Musician", "Chef"], 
             Parameters.CatEmoji),
             
-        new("¿Qué canción me recuerda a ti?", 
-            ["Perfect - Ed Sheeran", "Yellow - Coldplay", "Do I Wanna Know - Artic Monkeys", "Die For You - The Weeknd"], 
+        new("Which song reminds me of you?", 
+            ["Perfect - Ed Sheeran", "Yellow - Coldplay", "Do I Wanna Know - Arctic Monkeys", "Die For You - The Weeknd"], 
             Parameters.MusicEmoji),
             
-        new("¿Estoy enamorado de tí?", 
-            ["Sí", "Sí", "Sí", "Sí"], 
+        new("Am I in love with you?", 
+            ["Yes", "Yes", "Yes", "Yes"], 
             Parameters.GiveHeartEmoji),
             
-        new("¿Cuál es mi superpoder secreto?", 
-            ["Poner caras raras", "Saber cuando tienes un problema", "Hacerte sonreír sin querer", "Amarte cada día más"], 
+        new("What's my secret superpower?", 
+            ["Making funny faces", "Knowing when you have a problem", "Making you smile unintentionally", "Loving you more every day"], 
+            Parameters.FitnessEmoji),
+            
+        new("What do I love most about you?", 
+            ["Your smile", "Your intelligence", "Your personality", "Your sense of humor"], 
             Parameters.GiveHeartEmoji),
             
-        new("¿Qué me gusta más de tí?", 
-            ["Tu sonrisa", "Tu inteligencia", "Tu forma de ser", "Tu culo"], 
+        new("Where would be our ideal date?", 
+            ["At home watching movies", "At the beach at sunset", "At a restaurant", "Anywhere with you"], 
             Parameters.GiveHeartEmoji),
             
-        new("¿Dónde sería nuestra cita ideal?", 
-            ["En casa viendo películas", "En la playa al atardecer", "En un restaurante", "Cualquier lugar contigo"], 
-            Parameters.GiveHeartEmoji),
-            
-        new("¿Cuánto te amo?", 
-            ["Mucho", "Muchísimo", "Infinito", "Más de lo que las palabras pueden expresar"], 
+        new("How much do I love you?", 
+            ["A lot", "So much", "Infinitely", "More than words can express"], 
             Parameters.GiveHeartEmoji)
-    };
+    ];
 
-    public static void DisplayQuestion(int quizCounter)
+public static void DisplayQuestion(int quizCounter)
+{
+    if (quizCounter >= Questions.Length)
     {
-        if (quizCounter < 1 || quizCounter > Questions.Length)
-        {
-            Console.WriteLine("Ocurrió un error mientras se desplegaba la pregunta");
-            return;
-        }
-
-        if (quizCounter == Questions.Length)
-        {
-            ShowScore();
-            return;
-        }
-
-        var question = Questions[quizCounter - 1];
-        ShowQuestion(question.Text, question.Answers, question.Emoji);
-        QuizScore += int.Parse(Console.ReadLine() ?? "0");
+        Console.WriteLine("An error occurred while displaying the question");
+        return;
     }
 
-    private static void ShowScore()
+    var question = Questions[quizCounter];
+    ShowQuestion(question.Text, question.Answers, question.Emoji);
+    
+    while (true)
     {
-        ConsolePersonalizer.ColorPrint($"¡¡¡Tu puntuación final es: {QuizScore}!!!", ConsoleColor.Cyan);
+        var input = Console.ReadLine();
+        if (int.TryParse(input, out int answer) && answer >= 1 && answer <= 3)
+        {
+            QuizScore += answer;
+            break;
+        }
+        else
+        {
+            ConsolePersonalizer.ColorPrint("Please enter a valid number between 1 and 4:", ConsoleColor.Red);
+            Console.Write("➤ ");
+        }
+    }
+}
+
+    public static void ShowScore()
+    {
+        ConsolePersonalizer.ColorPrint($"Your final score is: {QuizScore}!!!", ConsoleColor.Cyan);
     }
 
     private static void ShowQuestion(string question, string[] answers, string emoji = Parameters.CatEmoji)
@@ -85,6 +93,6 @@ public class QuizHelper
         ConsolePersonalizer.ColorPrint($"3. {answers[2]}    4. {answers[3]}", ConsoleColor.Gray);
     }
 
-    // Clase auxiliar para representar una pregunta
-    private record QuizQuestion(string Text, string[] Answers, string Emoji = Parameters.CatEmoji);
+    // Helper class to represent a question
+    public record QuizQuestion(string Text, string[] Answers, string Emoji = Parameters.CatEmoji);
 }

@@ -3,7 +3,6 @@
 public class ConsolePersonalizer
 {
 
-
     public static void ColorPrint(string text, ConsoleColor color)
     {
         Console.WriteLine("");
