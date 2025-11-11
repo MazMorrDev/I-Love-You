@@ -34,12 +34,14 @@ A interactive console application designed as a romantic gift, featuring a perso
 ## PROJECT STRUCTURE
 
 ```text
-LoveQuiz/
-├── CommandsManager.cs      # Main menu and command handler
-├── QuizHelper.cs           # Quiz logic and questions
-├── GalleryHelper.cs        # Message gallery management
-├── ConsolePersonalizer.cs  # Console formatting utilities
-└── Parameters.cs           # Application constants and emojis
+ILoveYou/
+├── Commands/
+├──── CommandsManager.cs      # Main menu and command handler
+├── Utils/
+├──── QuizHelper.cs           # Quiz logic and questions
+├──── MessagesHelper.cs       # Message gallery management
+├──── ConsolePersonalizer.cs  # Console formatting utilities
+└──── Parameters.cs           # Application constants and emojis
 ```
 
 ## USAGE

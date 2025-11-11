@@ -12,3 +12,4 @@
 /home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ILoveYou.pdb
 /home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ILoveYou.genruntimeconfig.cache
 /home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ref/ILoveYou.dll
+/home/mazmorrdev/Documentos/Proyectos/C#/ILoveYou/obj/Debug/net9.0/ILoveYou.sourcelink.json
